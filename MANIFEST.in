@@ -1,0 +1,10 @@
+include MANIFEST.in
+include *.txt
+# Top-level
+include setup.py README.md LICENCSE
+# All-source file
+recursive-include modulename *
+# All documentation
+recursive-include docs *
+# Exclude what we don't want to include
+# global-exclude *.pyc *~ *.bak *.swp *.pyo
