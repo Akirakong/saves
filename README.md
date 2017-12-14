@@ -15,13 +15,13 @@ pip install saves
 save
 ```
 num = 99
-s = saves.saves()
+s = saves.Saves()
 s.save('numer',num)
 ```
 
 load
 ```
-s = saves.saves()
+s = saves.Saves()
 num = s.load('numer')
 print(num)
 # 99
@@ -29,19 +29,19 @@ print(num)
 
 delete
 ```
-s = saves.saves()
+s = saves.Saves()
 s.delete('numer')
 ```
 
 delete all
 ```
-s = saves.saves()
+s = saves.Saves()
 s.clean()
 ```
 
 get keys
 ```
-s = saves.saves()
+s = saves.Saves()
 keys = s.keys('numer')
 print(keys)
 # ['hoge','fuga']
