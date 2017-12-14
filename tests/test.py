@@ -15,9 +15,6 @@ class Testsaves(unittest.TestCase):
         print('setup')
         self.s.clean()
 
-    def tearDown(self):
-        print('tearDown')
-
     @classmethod
     def tearDownClass(cls):
         print('tearDownClass')
@@ -56,6 +53,7 @@ class Testsaves(unittest.TestCase):
         self.assertTrue(isinstance(t, tuple))
 
     def test_clean(self):
+        self.s.save('hoge','hoge')
         self.s.clean()
         r = self.s.load('hoge')
         self.assertEqual(len(r),0)
