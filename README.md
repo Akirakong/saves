@@ -42,7 +42,7 @@ s.clean()
 get keys
 ```
 s = saves.Saves()
-keys = s.keys('numer')
+keys = s.keys()
 print(keys)
 # ['hoge','fuga']
 ```
