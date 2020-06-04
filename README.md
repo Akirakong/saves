@@ -49,12 +49,6 @@ print(keys)
 # ['hoge','fuga']
 ```
 
-change database name
-```
-Saves.current_dbname = 'fuga'
-s = saves.Saves()
-```
-
 Change the name of the database used
 ```
 Saves.current_dbname = 'fuga'
