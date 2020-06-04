@@ -6,6 +6,7 @@ savesはシンプルなデータ永続化機構を提供します。
 
 saves provide you to data persistence.  
 A database (sqlite3) will be created in the current directory.
+
 ---
 
 install
