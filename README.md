@@ -1,9 +1,11 @@
 # saves
 
 
-savesはシンプルなデータ永続化機構を提供します。
+savesはシンプルなデータ永続化機構を提供します。  
+カレントディレクトリにデータベース(sqlite3)が作成されます。
 
-saves provide you to data persistence.
+saves provide you to data persistence.  
+A database (sqlite3) will be created in the current directory.
 
 ---
 
@@ -46,3 +48,16 @@ keys = s.keys()
 print(keys)
 # ['hoge','fuga']
 ```
+
+Change the name of the database used
+```
+Saves.current_dbname = 'fuga'
+s = saves.Saves()
+```
+
+Rename the already created database
+```
+s = saves.Saves()
+s.set_db_name('fuga')
+```
+
