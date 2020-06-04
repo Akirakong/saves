@@ -1,15 +1,18 @@
 # coding:utf-8
 import unittest
 import saves
+import os
 
 TESTTABLE = 'test'
+DBNAME = 'test.db'
+
 
 class Testsaves(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         print('setUpClass')
-        cls.s = saves.Saves(TESTTABLE)
+        cls.s = saves.Saves()
 
     def setUp(self):
         print('setup')
@@ -18,7 +21,8 @@ class Testsaves(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         print('tearDownClass')
-        cls.s.drop(TESTTABLE)
+        cls.s.drop()
+        os.remove('./' + DBNAME)
 
     def test_save(self):
         self.s.save('s', 'string')
@@ -68,3 +72,16 @@ class Testsaves(unittest.TestCase):
         l = self.s.keys()
         self.assertEqual(len(l),5)
 
+    def test_set_db_name(self):
+        self.s.set_db_name(DBNAME)
+        self.assertEqual(self.s.current_dbname, DBNAME)
+        self.assertTrue(os.path.exists('./' + DBNAME))
+
+    def test_reopen_db(self):
+
+        saves.Saves.current_dbname = 'testdb'
+        ss = saves.Saves()
+        ss.save('ss', 'ssvalue')
+
+        sss = saves.Saves()
+        self.assertEqual(sss.load('ss'), 'ssvalue')

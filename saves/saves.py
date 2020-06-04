@@ -1,17 +1,18 @@
 # coding:utf-8
 import sqlite3
 import ast
+import os
 
 
-dbname = 'database.db'
 table_name = 'saTable'
 types = (int,str,bool,list,dict,tuple)
 
 
 class Saves():
+    current_dbname = 'database.db'
 
     def __init__(self, table=table_name):
-        self.__conn = sqlite3.connect(dbname)
+        self.__conn = sqlite3.connect(self.__modify_dbname(Saves.current_dbname))
         self.__c = self.__conn.cursor()
         self.__table = table
         r = self.__is_exist(self.__table)
@@ -61,6 +62,28 @@ class Saves():
         sql = 'drop table ' + table
         self.__c.execute(sql)
         self.__conn.commit()
+
+    def set_db_name(self, dbname: str):
+        """ """
+        dbname = self.__modify_dbname(dbname)
+        self.__update_db_name(dbname)
+        Saves.current_dbname = dbname
+        self.__reconnect(dbname)
+
+    def __modify_dbname(self, dbname: str):
+        return dbname.replace('.db', '') + '.db'
+
+    def __reconnect(self, dbname: str):
+        self.__conn = sqlite3.connect(dbname)
+        self.__c = self.__conn.cursor()
+
+    def __update_db_name(self, dbname: str):
+        """データベース名を更新する"""
+        current_dbname = self.__modify_dbname(self.current_dbname)
+        if os.path.exists('./' + current_dbname):
+            os.rename('./' + current_dbname, dbname)
+            return
+        os.rename('./' + current_dbname, dbname)
 
     def __createTable(self, table: str):
         """テーブルを作成する"""
