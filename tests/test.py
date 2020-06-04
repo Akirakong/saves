@@ -15,7 +15,7 @@ class Testsaves(unittest.TestCase):
         cls.s = saves.Saves()
 
     def setUp(self):
-        print('setup')
+        print ("In method:" + self._testMethodName)
         self.s.clean()
 
     @classmethod
