@@ -114,8 +114,8 @@ class Saves():
         if all:
             sql = 'delete from ' + self.__table
         else:
-            sql = 'delete from ' + self.__table + ' WHERE key = {0}'.format(key)
-
+            sql = 'delete from ' + self.__table + ' WHERE key = "{0}"'.format(key)
+            
         self.__c.execute(sql)
         self.__conn.commit()
 
