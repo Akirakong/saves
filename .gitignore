@@ -40,12 +40,8 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 database.db
-saves.egg-info/top_level.txt
-saves.egg-info/dependency_links.txt
-saves.egg-info/SOURCES.txt
-saves.egg-info/PKG-INFO
-dist/saves-0.0.1.1-py3.6.egg
-dist/saves-0.0.1-py3.6.egg
+saves.egg-info/
+dist/
 build/lib/saves/saves.py
-build/lib/saves/__init__.p
+build/lib/saves/__init__.py
 venv
