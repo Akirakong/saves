@@ -8,7 +8,7 @@ sys.path.append('./tests')
 
 setup(
     name='saves',
-    version='0.0.1.3',
+    version='0.1',
     description='simple data persistence package.',
     url="https://github.com/Akirakong/saves",
     packages=['saves'],
