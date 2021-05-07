@@ -15,7 +15,7 @@ class Testsaves(unittest.TestCase):
         cls.s = saves.Saves()
 
     def setUp(self):
-        print ("In method:" + self._testMethodName)
+        print("In method:" + self._testMethodName)
         self.s.clean()
 
     @classmethod
@@ -71,6 +71,11 @@ class Testsaves(unittest.TestCase):
 
         l = self.s.keys()
         self.assertEqual(len(l),5)
+
+    def test_delete(self):
+        COLUMN_NAME = 'fuga'
+        self.s.save(COLUMN_NAME, 99)
+        self.s.delete(COLUMN_NAME)
 
     def test_set_db_name(self):
         self.s.set_db_name(DBNAME)
